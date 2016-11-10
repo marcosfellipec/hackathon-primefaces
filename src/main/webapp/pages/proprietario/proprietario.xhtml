@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<p:fieldset legend="Cadastro de Proprietário">
+			<p:panelGrid columns="1">
+
+				<p:fieldset legend="Dados Pessoais">
+					<p:panelGrid columns="2">
+						<h:outputLabel value="Nome" />
+						<p:inputText value="#{proprietarioMB.proprietario.nome}" />
+
+						<h:outputLabel value="Sexo" />
+						<p:inputText value="#{proprietarioMB.proprietario.sexo}" />
+
+						<h:outputLabel value="Data de Nascimento" />
+						<p:calendar value="#{proprietarioMB.proprietario.dtNascimento}" />
+
+						<h:outputLabel value="CPF" />
+						<p:inputText
+							value="#{proprietarioMB.proprietario.cpfProprietario}" />
+					</p:panelGrid>
+				</p:fieldset>
+				<p:fieldset legend="Endereço">
+					<p:panelGrid columns="2">
+						<h:outputLabel value="Endereço" />
+						<p:inputText value="#{proprietarioMB.proprietario.endereco}" />
+
+						<h:outputLabel value="Bairro" />
+						<p:inputText value="#{proprietarioMB.proprietario.bairro}" />
+
+						<h:outputLabel value="Cidade" />
+						<p:inputText value="#{proprietarioMB.proprietario.cidade}" />
+
+						<h:outputLabel value="UF" />
+						<p:inputText value="#{proprietarioMB.proprietario.uf}" />
+					</p:panelGrid>
+				</p:fieldset>
+
+				<p:fieldset legend="Contato">
+					<p:panelGrid columns="2">
+						<h:outputLabel value="DDD" />
+						<p:inputNumber value="#{proprietarioMB.proprietario.telefones}" />
+					
+						<h:outputLabel value="Telefone" />
+						<p:inputNumber value="#{proprietarioMB.proprietario.telefones}" />
+						
+						<h:outputLabel value="Tipo Telefone" />
+						<p:inputText value="#{proprietarioMB.proprietario.telefones}" />
+					</p:panelGrid>
+				</p:fieldset>
+			</p:panelGrid>
+			<p:commandButton value="Salvar" action="#{proprietarioMB.inserir()}"></p:commandButton>
+		</p:fieldset>
+		<p:dataTable var="proprietario"
+			value="#{proprietarioMB.proprietarios}">
+			<p:column headerText="Nome">
+				<h:outputText value="#{proprietario.nome}" />
+			</p:column>
+
+			<p:column headerText="Sexo">
+				<h:outputText value="#{proprietario.sexo}" />
+			</p:column>
+
+			<p:column headerText="Data de Nascimento">
+				<h:outputText value="#{proprietario.dtNascimento}" />
+			</p:column>
+
+			<p:column headerText="CPF">
+				<h:outputText value="#{proprietario.cpfProprietario}" />
+			</p:column>
+
+			<p:column headerText="Endereço">
+				<h:outputText value="#{proprietario.endereco}" />
+			</p:column>
+
+			<p:column headerText="Cidade">
+				<h:outputText value="#{proprietario.cidade}" />
+			</p:column>
+
+			<p:column headerText="Bairro">
+				<h:outputText value="#{proprietario.bairro}" />
+			</p:column>
+
+			<p:column headerText="UF">
+				<h:outputText value="#{proprietario.uf}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

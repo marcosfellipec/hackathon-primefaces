@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+<h:form>      
+    <p:panel id="panel" header="Pesquisa" style="margin-bottom:10px;"> 
+        <h:panelGrid columns="4" cellpadding="5">
+            <h:outputLabel for="CampoPesquisaNome" value="Nome:" />
+            <p:inputText id="CampoPesquisaNome" value="#{agenteMB.agente.nome}" label="Nome"/>
+            <h:outputLabel for="CampoPesquisaData" value="Data:" /> 
+            <p:calendar id="CampoPesquisaData" value="#{agenteMB.agente.dtContratacao}" label="Data"/>
+			<h:outputLabel for="CampoPesquisaTempoServico" value="Tempo de Serviço" />
+            <p:inputNumber id="CampoPesquisaTempoServico" value="#{agenteMB.agente.tempoServico}" label="Tempo de Serviço:" minValue="0"/>
+        </h:panelGrid>
+    </p:panel>
+ 	<center>
+    <h:panelGrid columns="2">
+    	<p:commandButton value="Pesquisar" action="#{agenteMB.busca(agenteMB.agente)}" />
+        <p:commandButton value="Limpar" />
+    </h:panelGrid>
+            <p:commandButton value="Incluir" action="#{agenteMB.cadastroRedirect()}" />
+    </center>
+    <br/>
+    <br/>
+</h:form>
+ <p:dataTable id="dataTableAgente" var="agente" value="#{agenteMB.listarAgentes()}" paginator="true" rows="10"
+                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                 rowsPerPageTemplate="5,10,15" emptyMessage="Nenhum Registro Encontrado">
+	<f:facet name="header">
+        Lista de Agentes
+    </f:facet>
+    <p:column headerText="Nome:">
+        <h:outputText value="#{agente.nome}" />
+    </p:column>
+ 
+    <p:column headerText="Data de Contratação:" >
+        <h:outputLabel value="#{agente.dtContratacao}" />
+    </p:column>
+ 
+ 	<p:column headerText="Tempo de Serviço:(Anos)" >
+        <h:outputText value="#{agente.tempoServico}" />
+    </p:column>
+ 
+    <p:column headerText="Ações" >
+       	<h:form>   		
+    		<p:commandLink action="#{agenteMB.excluir(agente)}" value="Excluir" actionListener="#{dialogView.destroyWorld}" update="message" ajax="false">
+    			        <p:confirm header="Confirmação" message="Você tem certeza que quer excuir o registro?" icon="ui-icon-alert" />
+    		</p:commandLink>
+			&nbsp;		
+			<p:commandLink value="Alterar" type="button" onclick="PF('dlg2').show();" action="#{agenteMB.busca(agente)}"/>			
+			
+		<p:dialog header="Alteração Agente" widgetVar="dlg2" modal="true" height="150" width="400">
+		 	<h:form>
+  			 <p:panelGrid columns="2">
+    			<p:outputLabel value="Nome:"/>
+    			<p:inputText value="#{agenteMB.agente.nome}" valueChangeListener="#{agenteMB.agente.nome}"/>
+    			<p:outputLabel for="date" value="Data de Contratação:"/>    	
+       			<p:calendar id="date" value="#{agenteMB.agente.dtContratacao}" mask="99/99/9999"/>
+    			<p:outputLabel value="Tempo de Serviço:"/>
+    			<p:inputNumber value="#{agenteMB.agente.tempoServico}"/>
+   			</p:panelGrid>
+		<br/>
+	   		<p:commandButton value="Alterar Agente" action="#{agenteMB.alterar(agente)}"/>
+   	 	</h:form>
+   	</p:dialog>   
+ 	
+ 	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Confirmar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
+		</h:form>
+    </p:column>
+ 
+</p:dataTable>
+</h:body>
+</html>
