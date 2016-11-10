@@ -16,13 +16,13 @@
 
 				<h:outputLabel value="Agente Responsável" />
 				<p:autoComplete id="acAgente"
-					value="#{infracaoMB.infracao.agente.idAgente}" var="agente"
+					value="#{infracaoMB.infracao.agente}" var="agente"
 					itemLabel="#{agente.nome}"
 					completeMethod="#{infracaoMB.completeAgente}" />
 
 				<h:outputLabel value="Local de Infração" />
 				<p:autoComplete id="acLocal"
-					value="#{infracaoMB.infracao.localInfracao.idLocalInfracao}" var="local"
+					value="#{infracaoMB.infracao.localInfracao}" var="local"
 					itemLabel="#{local.descricaoLocalInfracao}"
 					completeMethod="#{infracaoMB.completeLocalInfracao}" />
 
@@ -38,21 +38,25 @@
 			<br />
 			<br />
 
-			<p:dataTable id="table" var="agente" value="#{agenteMB.agentes}">
+			<p:dataTable id="table" var="infracao" value="#{infracaoMB.infracoes} " >
 				<p:column headerText="Nome">
-					<h:outputText value="#{agente.nome}" />
+					<h:outputText value="#{infracao.agente.nome}" />
 				</p:column>
-
-				<p:column headerText="CPF">
-					<h:outputText value="#{agente.cpf}" />
+				
+				<p:column headerText="Velocidade">
+					<h:outputText value="#{infracao.velocidade}" />
 				</p:column>
-
-				<p:column headerText="Data de Contratação">
-					<h:outputText value="#{agente.dtContratacao}" />
-				</p:column>
-
-				<p:column headerText="Tempo de Serviço">
-					<h:outputText value="#{agente.tempoServico}" />
+				
+				<p:column headerText="Opções">
+					<h:form>
+						<p:commandLink actionListener="#{infracaoMB.excluir(infracao)}" ajax="false">
+							<h:outputText value="Excluir" />
+						</p:commandLink>
+	   					&nbsp;
+	   					<p:commandLink actionListener="#{infracaoMB.alterar(infracao)}" ajax="false">
+							<h:outputText value="Editar" />
+						</p:commandLink>
+					</h:form>
 				</p:column>
 			</p:dataTable>
 		</h:form>

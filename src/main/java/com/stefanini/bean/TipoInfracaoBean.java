@@ -25,7 +25,6 @@ public class TipoInfracaoBean implements Serializable{
 	
 	@Inject
 	private Tipoinfracao tipoInfracao;
-	
 	private List<Tipoinfracao> tipos;
 
 	public Tipoinfracao getTipoInfracao() {

@@ -24,7 +24,6 @@ public class ProprietarioBean implements Serializable{
 	
 	@Inject
 	private ProprietarioService proprietarioService;
-	
 	private List<Proprietario> proprietarios;
 
 	public List<Proprietario> getProprietarios() {

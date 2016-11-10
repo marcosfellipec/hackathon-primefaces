@@ -36,13 +36,12 @@ public class InfracaoBean implements Serializable{
 	
 	@Inject
 	private Infracoes infracao;
-	
 	private List<Infracoes> infracoes;
 	private List<Agente> agentes;
 	private List<Localinfracao> locaisInfracao;
 	
 	@PostConstruct
-	public void init() {
+	public void inicia() {
 		getInfracoes();
 		getAgentes();
 		getLocaisInfracao();
@@ -108,7 +107,6 @@ public class InfracaoBean implements Serializable{
         		results.add(a);
         	}
         }
-         
         return results;
     }
 	

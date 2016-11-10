@@ -25,7 +25,7 @@ public class LocalInfracaoRepository {
 	}
 
 	public List<Localinfracao> lista() {
-		return this.manager.createQuery("select c from LocalInfracao c", Localinfracao.class)
+		return this.manager.createQuery("select c from Localinfracao c", Localinfracao.class)
 				.getResultList();
 	}
 	

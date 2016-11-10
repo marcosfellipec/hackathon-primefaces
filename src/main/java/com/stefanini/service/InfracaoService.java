@@ -22,8 +22,7 @@ public class InfracaoService {
 	 }
 	    
 	 @TransactionAttribute(TransactionAttributeType.REQUIRED)
-	 public List<Infracoes> listar(){
-	    	
+	 public List<Infracoes> listar(){	    	
 	  	return infracaoRepository.lista();
 	 }
 	    

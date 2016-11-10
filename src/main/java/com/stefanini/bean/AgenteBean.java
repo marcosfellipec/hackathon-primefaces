@@ -25,7 +25,6 @@ public class AgenteBean implements Serializable{
 
 	@Inject
 	private AgenteService agenteService;
-	
 	private List<Agente> agentes;
 	
 	public List<Agente> getAgentes() {
@@ -80,6 +79,7 @@ public class AgenteBean implements Serializable{
 				agente.setTempoServico(tempoServico++);
 			}
 		} else {
+			tempoServico = 0;
 			agente.setTempoServico(tempoServico);
 		}
 	}

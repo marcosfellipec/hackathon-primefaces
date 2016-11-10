@@ -3,6 +3,9 @@ package com.stefanini.model;
 
 import javax.persistence.GenerationType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +35,7 @@ public class Modelo implements java.io.Serializable {
 	private Categoria categoria;
 	@Column(name="descricao",length=50)
 	private String descricao;
-
+	
 	public Modelo() {
 	}
 	
@@ -74,4 +77,6 @@ public class Modelo implements java.io.Serializable {
 	public void setDescricaoModelo(String descricao) {
 		this.descricao = descricao;
 	}
+	
+        
 }

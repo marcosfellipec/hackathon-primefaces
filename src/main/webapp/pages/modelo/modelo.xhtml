@@ -13,9 +13,13 @@
 	<h:form>
 		<p:fieldset legend="Cadastro de Modelo">
 			<p:panelGrid columns="2">
-				<h:outputLabel value="Categoria" />
-				<p:inputText value="#{categoriaMB.categoria.descricaoCategoria}" />
 				
+				<h:outputLabel value="Categoria" />
+				<p:autoComplete id="acCategoria"
+				value="#{modeloMB.modelo.categoria.descricaoCategoria}" var="descricaoCategoria"
+				itemLabel="#{descricaoCategoria}"
+				completeMethod="#{modeloMB.completeCategoria}" />
+								
 				<h:outputLabel value="Modelo" />
 				<p:inputText value="#{categoriaMB.categoria.descricaoCategoria}" />
 			</p:panelGrid>

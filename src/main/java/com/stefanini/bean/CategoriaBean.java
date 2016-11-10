@@ -25,7 +25,6 @@ public class CategoriaBean implements Serializable {
 	
 	@Inject
 	private CategoriaService categoriaService;
-
 	private List<Categoria> categorias;
 	
 	public List<Categoria> getCategorias() {

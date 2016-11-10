@@ -15,29 +15,20 @@
 			<p:panelGrid columns="2">
 
 				<h:outputLabel value="Placa" />
-				<p:inputText value="#{agenteMB.agente.nome}" />
-
-				<h:outputLabel value="CPF Proprietário" />
-				<p:inputNumber value="#{agenteMB.agente.cpfAgente}" />
-
-				<h:outputLabel value="Modelo" />
-				<p:calendar value="#{agenteMB.agente.dtContratacao}"></p:calendar>
-				
-				<h:outputLabel value="UF" />
-				<p:calendar value="#{agenteMB.agente.dtContratacao}"></p:calendar>
+				<p:inputText value="#{veiculoMB.veiculo.uf}" />
 
 			</p:panelGrid>
 			<br />
 			
-			<p:commandButton value="Salvar" action="#{agenteMB.inserir()}"
+			<p:commandButton value="Salvar" action="#{veiculoMB.inserir()}"
 				update="@form"></p:commandButton>
 
 			<br />
 			<br />
 			
-			<p:dataTable id="table" var="agente" value="#{agenteMB.agentes}">
+			<p:dataTable id="table" var="veiculo" value="#{veiculoMB.veiculos}">
 				<p:column headerText="Nome">
-					<h:outputText value="#{agente.nome}" />
+					<h:outputText value="#veiculos.uf}" />
 				</p:column>
 
 				<p:column headerText="CPF">

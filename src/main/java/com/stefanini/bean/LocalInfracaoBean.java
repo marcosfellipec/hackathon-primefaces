@@ -25,7 +25,6 @@ public class LocalInfracaoBean implements Serializable{
 	
 	@Inject
 	private Localinfracao localInfracao;
-	
 	private List<Localinfracao> locais;
 
 	public Localinfracao getLocalInfracao() {

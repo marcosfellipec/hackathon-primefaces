@@ -24,10 +24,8 @@ public class TipoTelefoneBean implements Serializable {
 	
 	@Inject
 	private TipoTelefoneService tipoTelefoneService;
-	
 	private List<Tipotelefone> tiposTelefones;
 	
-
 	public Tipotelefone getTipoTelefone() {
 		if (tipoTelefone == null){
 			tipoTelefone = new Tipotelefone();
